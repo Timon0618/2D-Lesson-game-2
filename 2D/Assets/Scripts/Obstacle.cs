@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-
     [SerializeField] private float _speed = 1;
+    private Rigidbody2D _rb;
+    
+
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+
+    }
 
     protected void Movement()
     {
-        transform.position += _speed * Time.deltaTime * Vector3.down;
+        _rb.velocity = _speed * GameData.DifficultMultiplier * Vector3.down;
     }
 }
